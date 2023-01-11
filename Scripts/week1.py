@@ -32,7 +32,7 @@ mc.rename("NewName")
 width1 = mc.polyCube("NewName", q=True, width=True)
 
 
-myCube3 = mc.polyCube(name="cubey", constructionHistory=False)
+myCube3 = mc.polyCube(name="cubey")
 mc.move(5, 0, 0, myCube3[0], relative=True,
         objectSpace=True, worldSpaceDistance=True)
 mc.rotate(45, 10, 3, myCube3[0], absolute=True)
@@ -42,3 +42,9 @@ mc.rotate(45, 10, 3, myCube3[0], absolute=True)
 width = mc.polyCube(myCube3[0], q=True, width=True)
 # Edit = Set - Flag = e
 mc.polyCube(myCube3[0], e=True, width=5.34)
+
+# Dont access using string, because it will only look up for the one with the name
+myCube4 = mc.polyCube(name="cubey", constructionHistory=False)
+mc.move(5, 0, 0, "cubey", relative=True,
+        objectSpace=True, worldSpaceDistance=True)
+mc.rotate(45, 10, 3, "cubey", absolute=True)
