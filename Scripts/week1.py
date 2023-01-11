@@ -17,14 +17,28 @@ from maya import cmds as mc
 # Construction History = INPUT
 wallName = "Boxey"
 myCube2 = mc.polyCube(width=5, height=2, depth=0.5, name=wallName, subdivisionsX=10, subdivisionsY=6,
-                      subdivisionsZ=2, axis=(0, 1, 0), createUVs=False, constructionHistory=False)
+                      subdivisionsZ=2, axis=(0, 1, 0), createUVs=False)
 # Create, then Move
 mc.move("25cm", "0cm", "0cm", myCube2)
 
-# Rotate
-# rotate -r -os -fo -52.77125 10.221411 -51.780312 ;
+# # Rotate
+# rotate - r - os - fo - 52.77125 10.221411 - 51.780312 = MEL
 mc.rotate(90, 125, 0, myCube2,  absolute=True, centerPivot=True,
           deletePriorHistory=True, translate=False)
-# Rename Object
+# # Rename Object
 mc.select(myCube2, replace=True)
 mc.rename("NewName")
+
+width1 = mc.polyCube("NewName", q=True, width=True)
+
+
+myCube3 = mc.polyCube(name="cubey", constructionHistory=False)
+mc.move(5, 0, 0, myCube3[0], relative=True,
+        objectSpace=True, worldSpaceDistance=True)
+mc.rotate(45, 10, 3, myCube3[0], absolute=True)
+
+# Use Query to store flags as variables = Example - Width
+# Query = Get - Flag = q
+width = mc.polyCube(myCube3[0], q=True, width=True)
+# Edit = Set - Flag = e
+mc.polyCube(myCube3[0], e=True, width=5.34)
