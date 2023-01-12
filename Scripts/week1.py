@@ -48,3 +48,31 @@ myCube4 = mc.polyCube(name="cubey", constructionHistory=False)
 mc.move(5, 0, 0, "cubey", relative=True,
         objectSpace=True, worldSpaceDistance=True)
 mc.rotate(45, 10, 3, "cubey", absolute=True)
+
+
+# Get ATTR
+# Get attribute of an object
+mc.getAttr(myCube3[0] + ".rz")
+mc.polyCube(myCube3[0], q=True, width=True)
+# To Get some attributes that are not in a transform, they must be taken from the second node, not from the transform
+mc.getAttr(myCube3[1] + ".width")
+
+
+######### TRANSFORMS ###############
+
+# Additive = When using "relative" space it will add to the previous value
+# Override = When using "World" space it will add to the previous value
+
+# Relative vs Worlspace transform
+mc.xform(myCube3[0], worldSpace=True, translation=(
+    5, 5, 5))  # Will not add aditional units
+mc.xform(myCube3[0], relative=True, translation=(5, 5, 5))  # Additive
+
+# Get translation in worldspace(ws=) or relative(r=) and store it in "position variable (list)"
+position = mc.xform(myCube3[0], worldSpace=True, translation=True, q=True)
+print(f"{myCube3[0]} position : {position}")
+
+# Set rotation relative or ws - Euler
+mc.xform(myCube3[0], euler=True, rotation=(45, 45, 45))  # Override
+mc.xform(myCube3[0], relative=True, euler=True,
+         rotation=(45, 90, 120))  # Additive
