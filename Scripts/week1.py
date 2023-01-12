@@ -1,4 +1,4 @@
-from maya import cmds as mc
+import maya.cmds as mc
 
 # To run code in Maya - Select Line and Right click, send to maya
 
@@ -58,7 +58,7 @@ mc.polyCube(myCube3[0], q=True, width=True)
 mc.getAttr(myCube3[1] + ".width")
 
 
-######### TRANSFORMS ###############
+######### TRANSFORMS - XFORM COMMAND ###############
 
 # Additive = When using "relative" space it will add to the previous value
 # Override = When using "World" space it will add to the previous value
@@ -76,3 +76,8 @@ print(f"{myCube3[0]} position : {position}")
 mc.xform(myCube3[0], euler=True, rotation=(45, 45, 45))  # Override
 mc.xform(myCube3[0], relative=True, euler=True,
          rotation=(45, 90, 120))  # Additive
+mc.xform(myCube3[0], worldSpace=True, euler=True, rotation=(45, 45, 45))
+
+# Get rotation - From Query
+rot = mc.xform(myCube3[0], worldSpace=True, rotation=True, q=True)
+print(rot)
