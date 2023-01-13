@@ -160,3 +160,6 @@ mc.xform(right_foot, worldSpace=True, translation=(-17, 4, 0))
 mc.xform(right_foot, worldSpace=True, euler=True, rotation=(0, 45, -45))
 
 ############################## Legs End #################################
+
+# Clear Selection after creationg
+mc.select(deselect=True)
