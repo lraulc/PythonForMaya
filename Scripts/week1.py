@@ -52,7 +52,7 @@ mc.rotate(45, 10, 3, "cubey", absolute=True)
 
 # Get ATTR
 # Get attribute of an object
-mc.getAttr(myCube3[0] + ".rz")
+mc.getAttr(myCube3[0] + ".rz")  # Rotation Z
 mc.polyCube(myCube3[0], q=True, width=True)
 # To Get some attributes that are not in a transform, they must be taken from the second node, not from the transform
 mc.getAttr(myCube3[1] + ".width")
